@@ -12,6 +12,9 @@ local config = {
       diagnostics = {
          ignoredCodes = { 80001 },
       },
+      implicitProjectConfiguration = {
+         checkJs = true
+      },
       -- javascript = {
       --     inlayHints = {
       --         includeInlayEnumMemberValueHints = true,

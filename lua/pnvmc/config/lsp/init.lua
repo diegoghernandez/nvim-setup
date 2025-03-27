@@ -1,6 +1,6 @@
 local M = {}
 
--- local navic_attach = require('gmr.configs.lsp.navic').attach
+-- local navic_attach = require('pnvmc.config.lsp.navic').attach
 
 -- local running_windows = vim.fn.has 'win32' == 1
 
@@ -16,7 +16,7 @@ function M.on_attach(client, bufnr)
             self,
             method,
             params,
-            require('gmr.configs.lsp.handlers').go_to_definition,
+            require('pnvmc.config.lsp.handlers').go_to_definition,
             bufnr_req
          )
       else
@@ -102,26 +102,26 @@ function M.on_attach(client, bufnr)
       keymap('gD', vim.lsp.buf.declaration)
    end
 
-   if client:supports_method(methods.textDocument_documentHighlight) then
-      local augroup = vim.api.nvim_create_augroup(
-         'gmr_lsp_document_highlight',
-         { clear = false }
-      )
-
-      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-         group = augroup,
-         desc = 'Highlight references under the cursor',
-         buffer = bufnr,
-         callback = vim.lsp.buf.document_highlight,
-      })
-
-      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-         group = augroup,
-         desc = 'Clear highlight references after move cursor',
-         buffer = bufnr,
-         callback = vim.lsp.buf.clear_references,
-      })
-   end
+   -- if client:supports_method(methods.textDocument_documentHighlight) then
+   --    local augroup = vim.api.nvim_create_augroup(
+   --       'pnvmc_lsp_document_highlight',
+   --       { clear = false }
+   --    )
+   --
+   --    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+   --       group = augroup,
+   --       desc = 'Highlight references under the cursor',
+   --       buffer = bufnr,
+   --       callback = vim.lsp.buf.document_highlight,
+   --    })
+   --
+   --    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+   --       group = augroup,
+   --       desc = 'Clear highlight references after move cursor',
+   --       buffer = bufnr,
+   --       callback = vim.lsp.buf.clear_references,
+   --    })
+   -- end
 
    if client:supports_method(methods.textDocument_formatting) then
       keymap('<space>fo', function()

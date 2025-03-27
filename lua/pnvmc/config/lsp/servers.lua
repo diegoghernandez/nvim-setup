@@ -8,6 +8,7 @@ M.to_setup = {
    'buf_ls',
    'cssls',
    'dockerls',
+   -- 'emmet_ls',
    'emmet_language_server',
    'eslint',
    'html',
