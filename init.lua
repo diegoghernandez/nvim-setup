@@ -34,6 +34,12 @@ require 'nvmc.core.keymaps'
 require 'nvmc.core.autocommands'
 require 'nvmc.core.lazy'
 
+vim.filetype.add {
+  extension = {
+    ['http'] = 'http',
+  },
+}
+
 -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
 --
 --  Here are some example plugins that I've included in the Kickstart repository.
