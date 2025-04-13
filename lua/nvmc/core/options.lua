@@ -17,6 +17,7 @@ vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 
+vim.opt.textwidth = 100
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
