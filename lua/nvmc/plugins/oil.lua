@@ -6,8 +6,15 @@ return {
   ---@type oil.SetupOpts
   opts = {},
   -- Optional dependencies
-  dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+  dependencies = {
+    {
+      'echasnovski/mini.icons',
+      version = '*',
+      opts = {},
+    },
+    -- 'nvim-tree/nvim-web-devicons',
+  },
+  -- dependencies = { 'nvim-tree/nvim-web-devicons', opts = {} }, -- use if you prefer nvim-web-devicons
   config = function()
     require('oil').setup {
       view_options = {
