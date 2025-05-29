@@ -41,4 +41,7 @@ vim.keymap.set('n', '<leader>et', '<cmd>Oil<cr>', { desc = 'Exit of current file
 
 vim.keymap.set('n', '<C-w>t', '<cmd>60vsplit | term<cr>', { desc = 'Create a new vertical terminal' })
 
-vim.keymap.set('n', '<M-s>', '*:%s//', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<cr>')
+vim.keymap.set('v', '<leader>a', '*:%s//', { noremap = true, silent = true })
+
+vim.keymap.set('x', 'D', '"_d', { desc = 'Delete whithout yanking' })
