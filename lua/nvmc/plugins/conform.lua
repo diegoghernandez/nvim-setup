@@ -13,6 +13,14 @@ return { -- Autoformat
     },
   },
   opts = {
+    -- prettierd = {
+    --   prepend_args = function()
+    --     return {
+    --       '--config',
+    --       '~/.config/nvim/lua/nvmc/utils/linter-config/.prettierrc.json',
+    --     }
+    --   end,
+    -- },
     notify_on_error = false,
     format_on_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -30,11 +38,32 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
+      cs = { 'dotnet_format' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      htmlangular = { 'prettierd', 'prettier', stop_after_first = true },
+      vue = { 'prettierd', 'prettier', stop_after_first = true },
+      css = { 'prettierd', 'prettier', stop_after_first = true },
+      scss = { 'prettierd', 'prettier', stop_after_first = true },
+      html = { 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettierd', 'prettier', stop_after_first = true },
+      jsonc = { 'prettierd', 'prettier', stop_after_first = true },
+      yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      markdown = { 'prettierd', 'prettier', stop_after_first = true },
+      ['markdown.mdx'] = { 'prettierd', 'prettier', stop_after_first = true },
+    },
+    formatters = {
+      prettierd = {
+        condition = function()
+          return vim.loop.fs_realpath '.prettierrc.js' ~= nil or vim.loop.fs_realpath '.prettierrc.mjs' ~= nil
+        end,
+      },
     },
   },
 }
