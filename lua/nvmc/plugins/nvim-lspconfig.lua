@@ -14,6 +14,8 @@ return {
 
     -- Allows extra capabilities provided by blink.cmp
     'saghen/blink.cmp',
+
+    'nvim-java/nvim-java',
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -206,6 +208,24 @@ return {
       -- clangd = {},
       gopls = {},
       pyright = {},
+      angularls = {},
+      emmet_language_server = {},
+      cssls = {},
+      ['css-variables-language-server'] = {},
+      ['cssmodules_ls'] = {},
+      eslint = {
+        settings = {
+          packageManager = 'pnpm',
+        },
+        ---@diagnostic disable-next-line: unused-local
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = bufnr,
+            command = 'EslintFixAll',
+          })
+        end,
+      },
+
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
@@ -220,11 +240,6 @@ return {
           },
         },
       },
-      -- eslint = {
-      --   settings = {
-      --     workingDirectories = { mode = 'auto' },
-      --   },
-      -- },
     }
 
     -- Ensure the servers and tools above are installed
@@ -243,12 +258,17 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'roslyn',
+      'prettierd',
+      'prettier',
     })
 
-    require('mason').setup { registries = {
-      'github:mason-org/mason-registry',
-      'github:Crashdummyy/mason-registry',
-    } }
+    require('mason').setup {
+      registries = {
+        'github:mason-org/mason-registry',
+        'github:Crashdummyy/mason-registry',
+      },
+    }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -265,6 +285,15 @@ return {
           vim.lsp.enable(server_name)
           vim.lsp.config(server_name, server)
           -- require('lspconfig')[server_name].setup(server)
+        end,
+        jdtls = function()
+          require('java').setup {
+            -- Your custom jdtls settings goes here
+          }
+
+          require('lspconfig').jdtls.setup {
+            -- Your custom nvim-java configuration goes here
+          }
         end,
       },
     }
