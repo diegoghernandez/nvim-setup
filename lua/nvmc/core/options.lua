@@ -15,7 +15,7 @@ vim.g.have_nerd_font = false
 vim.opt.tabstop = 3
 vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 vim.opt.textwidth = 100
 -- Make line numbers default
@@ -79,3 +79,9 @@ vim.opt.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+
+vim.opt.spell = true
