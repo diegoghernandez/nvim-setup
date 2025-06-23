@@ -39,9 +39,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>et', '<cmd>Oil<cr>', { desc = 'Exit of current file / Move to previous directory' })
 
-vim.keymap.set('n', '<C-w>t', '<cmd>60vsplit | term<cr>', { desc = 'Create a new vertical terminal' })
-
 vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<cr>')
 vim.keymap.set('v', '<leader>a', '*:%s//', { noremap = true, silent = true })
 
 vim.keymap.set('x', 'D', '"_d', { desc = 'Delete whithout yanking' })
+
+-- term
+vim.keymap.set('n', '<C-w>t', '<cmd>60vsplit | term<cr>', { desc = 'Create a new vertical terminal' })
+vim.keymap.set({ 'n', 't' }, '<S-Tab>', require('nvmc.utils.toggleTerm').ToggleTerminal)
