@@ -257,10 +257,11 @@ return {
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      'csharpier',
       'stylua', -- Used to format Lua code
-      'roslyn',
       'prettierd',
       'prettier',
+      'roslyn',
     })
 
     require('mason').setup {

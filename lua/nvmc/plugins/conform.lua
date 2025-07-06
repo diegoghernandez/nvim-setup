@@ -13,14 +13,6 @@ return { -- Autoformat
     },
   },
   opts = {
-    -- prettierd = {
-    --   prepend_args = function()
-    --     return {
-    --       '--config',
-    --       '~/.config/nvim/lua/nvmc/utils/linter-config/.prettierrc.json',
-    --     }
-    --   end,
-    -- },
     notify_on_error = false,
     format_on_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -31,14 +23,14 @@ return { -- Autoformat
         return nil
       else
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_format = 'fallback',
         }
       end
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      cs = { 'dotnet_format' },
+      cs = { 'csharpier', lsp_format = 'never', stop_after_first = true },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
@@ -59,10 +51,16 @@ return { -- Autoformat
       ['markdown.mdx'] = { 'prettierd', 'prettier', stop_after_first = true },
     },
     formatters = {
-      prettierd = {
-        condition = function()
-          return vim.loop.fs_realpath '.prettierrc.js' ~= nil or vim.loop.fs_realpath '.prettierrc.mjs' ~= nil
-        end,
+      -- prettierd = {
+      --   condition = function()
+      --     return vim.loop.fs_realpath '.prettierrc.js' ~= nil or vim.loop.fs_realpath '.prettierrc.mjs' ~= nil
+      --   end,
+      -- },
+      csharpier = {
+        command = 'csharpier',
+        args = {
+          'format',
+        },
       },
     },
   },
