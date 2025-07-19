@@ -24,6 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   spec = {
     { import = 'nvmc/plugins' },
+    { import = 'nvmc/themes' },
   },
 }, {
   ui = {
