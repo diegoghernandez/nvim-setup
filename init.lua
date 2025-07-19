@@ -8,7 +8,7 @@ vim.diagnostic.config {
   virtual_lines = true,
 }
 
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'kanagawa-dragon'
 
 vim.filetype.add {
   extension = {
