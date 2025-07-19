@@ -5,8 +5,8 @@ return {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     -- Mason must be loaded before its dependents so we need to set it up here.
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-    { 'williamboman/mason.nvim', opts = {} },
-    'williamboman/mason-lspconfig.nvim',
+    { 'mason-org/mason.nvim', opts = {} },
+    'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
@@ -258,6 +258,8 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'csharpier',
+      'google-java-format',
+      'jdtls',
       'stylua', -- Used to format Lua code
       'prettierd',
       'prettier',
@@ -289,7 +291,9 @@ return {
         end,
         jdtls = function()
           require('java').setup {
-            -- Your custom jdtls settings goes here
+            jdk = {
+              auto_install = false,
+            },
           }
 
           require('lspconfig').jdtls.setup {
