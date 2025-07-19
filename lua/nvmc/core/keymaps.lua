@@ -46,4 +46,7 @@ vim.keymap.set('x', 'D', '"_d', { desc = 'Delete whithout yanking' })
 
 -- term
 vim.keymap.set('n', '<C-w>t', '<cmd>60vsplit | term<cr>', { desc = 'Create a new vertical terminal' })
-vim.keymap.set({ 'n', 't' }, '<S-Tab>', require('nvmc.utils.toggleTerm').ToggleTerminal)
+
+vim.keymap.set('n', '<S-Tab>', function()
+  return '<cmd>' .. vim.v.count .. 'ToggleTerm<cr>'
+end, { desc = 'Toggle a float terminal with the respective number', expr = true })
