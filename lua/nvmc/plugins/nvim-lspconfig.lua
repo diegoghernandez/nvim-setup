@@ -209,9 +209,10 @@ return {
       gopls = {},
       pyright = {},
       angularls = {},
+      astro = {},
       emmet_language_server = {},
       cssls = {},
-      ['css-variables-language-server'] = {},
+      ['css_variables'] = {},
       ['cssmodules_ls'] = {},
       eslint = {
         settings = {
@@ -225,10 +226,8 @@ return {
           })
         end,
       },
-
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-
       lua_ls = {
         settings = {
           Lua = {
@@ -264,6 +263,8 @@ return {
       'prettierd',
       'prettier',
       'roslyn',
+      'typos-lsp',
+      -- 'typescript-language-server',
     })
 
     require('mason').setup {
@@ -296,9 +297,10 @@ return {
             },
           }
 
-          require('lspconfig').jdtls.setup {
-            -- Your custom nvim-java configuration goes here
-          }
+          vim.lsp.config('jdtls', {})
+          -- require('lspconfig').jdtls.setup {
+          --   -- Your custom nvim-java configuration goes here
+          -- }
         end,
       },
     }
