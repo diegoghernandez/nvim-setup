@@ -1,9 +1,7 @@
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
-  config = {
-    direction = 'float',
-  },
+  lazy = false,
   keys = {
     {
       '<S-Tab>',
@@ -18,5 +16,8 @@ return {
       '<cmd>TermSelect<cr>',
       desc = 'Show all available terminals',
     },
+  },
+  config = {
+    direction = 'float',
   },
 }
