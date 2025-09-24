@@ -5,10 +5,8 @@ require 'nvmc.core.lazy'
 
 vim.diagnostic.config {
   virtual_text = false,
-  virtual_lines = true,
+  virtual_lines = false,
 }
-
-vim.cmd.colorscheme 'kanagawa-dragon'
 
 vim.filetype.add {
   extension = {
