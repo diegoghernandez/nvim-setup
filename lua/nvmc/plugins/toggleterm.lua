@@ -17,7 +17,7 @@ return {
       desc = 'Show all available terminals',
     },
   },
-  config = {
+  opts = {
     direction = 'float',
   },
 }
