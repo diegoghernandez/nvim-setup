@@ -1,5 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
+  enabled = true,
   -- optional for icon support
   dependencies = {
     'nvim-tree/nvim-web-devicons',
@@ -13,6 +14,14 @@ return {
   },
   -- or if using mini.icons/mini.nvim
   -- dependencies = { "nvim-mini/mini.icons" },
+  config = function()
+    require('fzf-lua').setup {
+      files = {
+        cwd_prompt = true,
+        file_ignore_patterns = { 'Debug' },
+      },
+    }
+  end,
   opts = function(_, opts)
     local config = require 'fzf-lua.config'
     local actions = require 'fzf-lua.actions'
@@ -42,6 +51,22 @@ return {
     return {
       oldfiles = {
         include_current_session = true,
+        cwd_only = true,
+        stat_file = true,
+      },
+      buffers = {
+        cwd_only = true,
+        current_tab_only = true,
+        ignore_current_buffer = true,
+      },
+      tabs = {
+        current_tab_only = true,
+        ignore_current_buffer = true,
+      },
+      grep = {
+        rg_glob = true, -- enable glob parsing
+        glob_flag = '--iglob', -- case insensitive globs
+        glob_separator = '%s%-%-', -- query separator pattern (lua): ' --'
       },
       previewers = {
         builtin = {
@@ -55,11 +80,6 @@ return {
           ueberzug_scaler = 'fit_contain',
           syntax_limit_b = 1024 * 100, -- 100KB
         },
-      },
-      grep = {
-        rg_glob = true, -- enable glob parsing
-        glob_flag = '--iglob', -- case insensitive globs
-        glob_separator = '%s%-%-', -- query separator pattern (lua): ' --'
       },
     }
   end,
@@ -88,7 +108,7 @@ return {
     { '<leader>sC', '<cmd>FzfLua commands<cr>', desc = 'Commands' },
     { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document Diagnostics' },
     { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Workspace Diagnostics' },
-    { '<leader>sg', '<cmd>FzfLua grep<cr>', desc = 'Grep' },
+    { '<leader>sg', '<cmd>FzfLua live_grep<cr>', desc = 'Grep' },
     { '<leader>sh', '<cmd>FzfLua help_tags<cr>', desc = 'Help Pages' },
     { '<leader>sH', '<cmd>FzfLua highlights<cr>', desc = 'Search Highlight Groups' },
     { '<leader>sj', '<cmd>FzfLua jumps<cr>', desc = 'Jumplist' },
