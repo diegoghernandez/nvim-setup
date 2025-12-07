@@ -31,10 +31,10 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       cs = { 'csharpier', lsp_format = 'never', stop_after_first = true },
+      java = { 'google-java-format' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
 
-      java = { 'google-java-format' },
       -- You can use 'stop_after_first' to run the first available formatter from the list
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -57,12 +57,6 @@ return { -- Autoformat
       --     return vim.loop.fs_realpath '.prettierrc.js' ~= nil or vim.loop.fs_realpath '.prettierrc.mjs' ~= nil
       --   end,
       -- },
-      csharpier = {
-        command = 'csharpier',
-        args = {
-          'format',
-        },
-      },
     },
   },
 }
