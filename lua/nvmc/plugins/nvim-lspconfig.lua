@@ -276,7 +276,7 @@ return {
       'prettier',
       'roslyn',
       'typos-lsp',
-      -- 'tsgo',
+      'ts_ls',
     })
 
     require('mason').setup {
@@ -315,6 +315,9 @@ return {
           -- }
         end,
       },
+      ['ts_ls'] = function()
+        -- do nothing, managed by typescript-tools
+      end,
     }
   end,
 }
