@@ -314,10 +314,10 @@ return {
           --   -- Your custom nvim-java configuration goes here
           -- }
         end,
+        ['ts_ls'] = function()
+          -- do nothing, managed by typescript-tools
+        end,
       },
-      ['ts_ls'] = function()
-        -- do nothing, managed by typescript-tools
-      end,
     }
   end,
 }
