@@ -1,5 +1,6 @@
 return {
   'GustavEikaas/easy-dotnet.nvim',
+  enabled = false,
   lazy = true,
   ft = 'cs',
   dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'seblyng/roslyn.nvim' },
