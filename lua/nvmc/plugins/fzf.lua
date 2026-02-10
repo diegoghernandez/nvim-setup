@@ -18,7 +18,7 @@ return {
     require('fzf-lua').setup {
       files = {
         cwd_prompt = true,
-        file_ignore_patterns = { 'Debug' },
+        file_ignore_patterns = { 'Debug', 'node_modules' },
       },
     }
   end,
